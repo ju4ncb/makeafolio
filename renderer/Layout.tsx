@@ -9,7 +9,7 @@ import "./css/index.css";
 import "./Layout.css";
 import Content from "../components/Content";
 
-const pagesNoSidebar = ["auth", "register"];
+const pagesNoSidebar = ["auth", "register", "inicio"];
 
 function Layout({
   children,
@@ -32,9 +32,8 @@ function Layout({
           {!pagesNoSidebar.includes(pageTitle) && (
             <Sidebar>
               <Logo />
-              <Link href="/">Welcome</Link>
-              <Link href="/about">About</Link>
-              <Link href="/star-wars">Data Fetching</Link>
+              <Link href="/dashboard">Tu inicio</Link>
+              <Link href="/account">Cuenta</Link>
             </Sidebar>
           )}
           <Content>{children}</Content>

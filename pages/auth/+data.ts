@@ -6,6 +6,6 @@ import type { PageContextServer } from "vike/types";
 
 const data = async (pageContext: PageContextServer) => {
   return {
-    title: "inicio",
+    title: "auth",
   };
 };

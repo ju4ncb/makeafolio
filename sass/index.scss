@@ -1,8 +1,15 @@
 @import "./page-transition-loading-animation.css";
 
+$color-1: #edf6f7;
+$color-2: #13293d;
+$color-3: #006494;
+$color-4: #2491a0;
+$color-5: #ffc21c;
+
 body {
   margin: 0;
   font-family: sans-serif;
+  background-color: $color-1;
 }
 
 * {
@@ -11,11 +18,169 @@ body {
 
 code {
   font-family: monospace;
-  background-color: #eaeaea;
+  background-color: $color-1;
   padding: 3px 5px;
   border-radius: 4px;
 }
 
 a {
   text-decoration: none;
+}
+
+// buttons
+
+@keyframes animateBorder {
+  0% {
+    clip-path: polygon(
+      50% 50%,
+      50% 50%,
+      100% 0,
+      50% 50%,
+      50% 50%,
+      50% 50%,
+      0 100%,
+      50% 50%
+    );
+  }
+  25% {
+    clip-path: polygon(
+      75% 75%,
+      75% 0,
+      100% 0,
+      100% 25%,
+      25% 25%,
+      25% 100%,
+      0 100%,
+      0 75%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0,
+      100% 0,
+      100% 50%,
+      50% 50%,
+      50% 100%,
+      0 100%,
+      0 50%
+    );
+  }
+  75% {
+    clip-path: polygon(
+      25% 25%,
+      25% 0,
+      100% 0,
+      100% 75%,
+      75% 75%,
+      75% 100%,
+      0 100%,
+      0 25%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      0 0,
+      0 0,
+      100% 0,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      0 100%,
+      0 0
+    );
+  }
+}
+
+@keyframes animateBorderRev {
+  0% {
+    clip-path: polygon(
+      0 0,
+      0 0,
+      100% 0,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      0 100%,
+      0 0
+    );
+  }
+  25% {
+    clip-path: polygon(
+      25% 25%,
+      25% 0,
+      100% 0,
+      100% 75%,
+      75% 75%,
+      75% 100%,
+      0 100%,
+      0 25%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0,
+      100% 0,
+      100% 50%,
+      50% 50%,
+      50% 100%,
+      0 100%,
+      0 50%
+    );
+  }
+  75% {
+    clip-path: polygon(
+      75% 75%,
+      75% 0,
+      100% 0,
+      100% 25%,
+      25% 25%,
+      25% 100%,
+      0 100%,
+      0 75%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      50% 50%,
+      50% 50%,
+      100% 0,
+      50% 50%,
+      50% 50%,
+      50% 50%,
+      0 100%,
+      50% 50%
+    );
+  }
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn-1 {
+  position: relative;
+  color: $color-1;
+  background: linear-gradient(to bottom, $color-4, $color-3);
+}
+
+.btn-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid $color-1;
+  border-radius: 5px;
+  box-sizing: border-box;
+  animation: animateBorder 0.5s linear, animateBorderRev 0.5s linear;
+  animation-play-state: paused, running;
+}
+
+.btn-1:hover::before {
+  animation-play-state: running, paused;
 }

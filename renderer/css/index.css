@@ -2,6 +2,7 @@
 body {
   margin: 0;
   font-family: sans-serif;
+  background-color: #edf6f7;
 }
 
 * {
@@ -10,13 +11,77 @@ body {
 
 code {
   font-family: monospace;
-  background-color: #eaeaea;
+  background-color: #edf6f7;
   padding: 3px 5px;
   border-radius: 4px;
 }
 
 a {
   text-decoration: none;
+}
+
+@keyframes animateBorder {
+  0% {
+    clip-path: polygon(50% 50%, 50% 50%, 100% 0, 50% 50%, 50% 50%, 50% 50%, 0 100%, 50% 50%);
+  }
+  25% {
+    clip-path: polygon(75% 75%, 75% 0, 100% 0, 100% 25%, 25% 25%, 25% 100%, 0 100%, 0 75%);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%);
+  }
+  75% {
+    clip-path: polygon(25% 25%, 25% 0, 100% 0, 100% 75%, 75% 75%, 75% 100%, 0 100%, 0 25%);
+  }
+  100% {
+    clip-path: polygon(0 0, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 0 100%, 0 0);
+  }
+}
+@keyframes animateBorderRev {
+  0% {
+    clip-path: polygon(0 0, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 0 100%, 0 0);
+  }
+  25% {
+    clip-path: polygon(25% 25%, 25% 0, 100% 0, 100% 75%, 75% 75%, 75% 100%, 0 100%, 0 25%);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%);
+  }
+  75% {
+    clip-path: polygon(75% 75%, 75% 0, 100% 0, 100% 25%, 25% 25%, 25% 100%, 0 100%, 0 75%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 50% 50%, 100% 0, 50% 50%, 50% 50%, 50% 50%, 0 100%, 50% 50%);
+  }
+}
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn-1 {
+  position: relative;
+  color: #edf6f7;
+  background: linear-gradient(to bottom, #2491a0, #006494);
+}
+
+.btn-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #edf6f7;
+  border-radius: 5px;
+  box-sizing: border-box;
+  animation: animateBorder 0.5s linear, animateBorderRev 0.5s linear;
+  animation-play-state: paused, running;
+}
+
+.btn-1:hover::before {
+  animation-play-state: running, paused;
 }
 
 /*# sourceMappingURL=index.css.map */
